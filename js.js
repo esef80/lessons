@@ -1,7 +1,7 @@
 'use strict';
 console.log('helloo');
 let town = ['London', 'Minga', 'Vinnitsa', 'new-York'];
-let numbers = [1, 9, 4, 5, 6, 4, 8];
+let numbers = [];
 let words = 'Развёрнутый 2569 комментарий Дэна Абрамова';
 let any = "10 little nigger boys went out to dine;\n" +
     "one choked his little self, and then there were 9 \n" +
@@ -136,22 +136,46 @@ assertEquals('x1 =0.6 x2 =0.5',quadraticEquationString(val7));
 
 console.log('----------------------------UNIT TEST END-------------------------------------------');
 console.log(solution(328));
+console.log(numbers);
+console.log(cyclicRotation([3, 8, 9, 7, 6], 3) );
+console.log(cyclicRotation([0, 0, 0], 1)  );
+console.log(cyclicRotation([1, 2, 3, 4], 4)  );
+console.log(cyclicRotation([], 1)  );
+
+
+function cyclicRotation (array,N) {
+    if (N > 0 && array.length !== N && array.length !== 0 ){
+        for (let i = 0; i < N; i++) {
+            let lastValue = array.pop();
+            array.unshift(lastValue);
+            }
+        return array
+    } else {
+        return array
+        }
+}
+
+
+
+
+
+
 function solution(N) {
-    let nArr, i, result = 0, sum = 0, maxIndex = 0;
+    let nArr, i, result = 0, count = 0, maxCount = 0;
     N = N.toString(2);
     nArr = N.split('');
     for (i = 0 ; i < nArr.length; i++){
         if (nArr[i] == 0 ){
-            sum++
-            if (sum > maxIndex && nArr[i+1] !== undefined){
-                maxIndex = sum;
+            count++
+            if (count > maxCount && nArr[i+1] !== undefined){
+                maxCount = count;
             }
         } else  {
-            if (sum > result){
-                result = sum;
+            if (count > result){
+                result = count;
             }
 
-            sum = 0;
+            count = 0;
         }
 
     }
