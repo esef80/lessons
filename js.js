@@ -142,6 +142,17 @@ console.log(cyclicRotation([0, 0, 0], 1)  );
 console.log(cyclicRotation([1, 2, 3, 4], 4)  );
 console.log(cyclicRotation([], 1)  );
 
+console.log(oddOccurrencesInArray(  [9, 3, 9, 3, 9, 7, 9] ));
+
+
+function oddOccurrencesInArray(array) {
+    let i, number;
+    for (i = 0; i < array.length; i++) {
+        number ^= array[i]
+    }
+    return number
+}
+
 
 function cyclicRotation (array,N) {
     if (N > 0 && array.length !== N && array.length !== 0 ){
