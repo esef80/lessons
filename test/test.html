@@ -93,36 +93,8 @@ function frogJump(A,B,D) {
         difference  = Math.floor(endPosition - currentPosition);
         return Math.ceil(difference / distance)
 }
+
 function frogRiverOne(D,array) {
-    let i,j,value,
-        minValue = Infinity,
-        emptyArray = [],
-        sumfullArray = 0,
-        sumEmptyArray;
-    for (i = 0; i < array.length; i++) {
-        if (minValue > array[i]) {
-            minValue = array[i];
-        }
-    }
-
-        sumfullArray = (D+1)/2*D;
-
-
-    for (i = 0; i < array.length; i++){
-        value = array[i] - minValue;
-        emptyArray[value] = array[i];
-        sumEmptyArray=0;
-        for (j = 0; j < D; j++){
-            sumEmptyArray += emptyArray[j]
-
-        }
-        if (sumEmptyArray == sumfullArray){
-            return i
-        }
-    }
-    return -1
-}
-function frogRiverOne2(D,array) {
     let i,value,
         entranceArray = [],
         quantityValue = 0;

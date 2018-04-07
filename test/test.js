@@ -54,14 +54,4 @@ describe("FrogRiverOne", function() {
         assert.equal(frogRiverOne(5, [3]), -1);
     });
 });
-describe(" this code to do it that \"FrogRiverOne\" but another method", function() {
 
-    it("frogRiverOne2", function() {
-        assert.equal(frogRiverOne2(5, [1,3,1,4,2,3,5,4]), 6);
-        assert.equal(frogRiverOne2(3, [1,3,1,4,2,3,5,4]), 4);
-        assert.equal(frogRiverOne2(1, [2,3,6,4,2,3,5,1]), 7);
-        assert.equal(frogRiverOne2(1, [1,3,6,4,2,3,5,1]), 0);
-        assert.equal(frogRiverOne2(5, [3]), -1);
-    });
-
-});
