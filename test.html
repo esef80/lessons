@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- подключаем стили Mocha, для отображения результатов -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
+    <!-- подключаем библиотеку Mocha -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+    <!-- настраиваем Mocha: предстоит BDD-тестирование -->
+    <script>
+        mocha.setup('bdd');
+    </script>
+
+    <!-- подключаем chai -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+    <!-- в chai есть много всего, выносим assert в глобальную область -->
+    <script>
+        var assert = chai.assert;
+    </script>
+</head>
+
+<body>
+
+<script>
+
+function  permMissingElem (array) {
+    let i , sumCorrectArray = 0, sumCurrentArray = 0;
+    for ( i = 0; i < array.length+1; i++){
+        sumCorrectArray += i + 1;
+    }
+    for (i = 0; i < array.length; i++){
+        sumCurrentArray += array[i];
+    }
+    return sumCorrectArray - sumCurrentArray
+}
+function permutation(A) {
+    let i,value,
+        array = A,
+        maxValue = 0,
+        minValue=Infinity,
+        difference,
+        correctArray = [];
+    for (i = 0; i < array.length; i++) {
+        if (maxValue < array[i]) {
+            maxValue = array[i];
+        }
+    }
+    for (i = 0; i < array.length; i++) {
+        if (minValue > array[i]) {
+            minValue = array[i];
+        }
+    }
+    difference = maxValue - minValue;
+    if ( minValue  > 1 || ++difference !== array.length){
+        return 0
+    }
+    for (i = 0; i < array.length; i++) {
+        value = array[i] - minValue;
+        if (typeof correctArray[value] !== 'undefined') {
+            return 0
+        }
+        correctArray[value] = array[i];
+    }
+    return 1
+}
+function tapeEquilibrium(a) {
+    let i,
+        sumFirstPart = 0,
+        sumAllArray = 0,
+        difference, minDifference = Infinity,
+        array = a;
+    for (i = 0; i < array.length; i++) {
+        sumAllArray += array[i];
+    }
+    for (i = 0; i < array.length-1; i++) {
+        sumFirstPart += array[i];
+        sumSecondPart = sumAllArray - sumFirstPart;
+
+        difference = Math.abs( sumSecondPart - sumFirstPart);
+        if (difference < minDifference) {
+            minDifference = difference
+        }
+    }
+    return minDifference;
+}
+function frogJump(A,B,D) {
+    let currentPosition = A,
+        endPosition = B,
+        distance = D,
+        difference;
+        difference  = Math.floor(endPosition - currentPosition);
+        return Math.ceil(difference / distance)
+}
+</script>
+
+<!-- в этом скрипте находятся спеки -->
+<script src="test.js"></script>
+
+<!-- в элементе с id="mocha" будут результаты тестов -->
+<div id="mocha"></div>
+
+<!-- запустить тесты! -->
+<script>
+    mocha.run();
+</script>
+</body>
+
+</html>
